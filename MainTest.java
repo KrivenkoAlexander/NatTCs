@@ -13,7 +13,6 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 import static java.lang.Math.pow;
 
-
 public class MainTest {
     String baseURL ="https://qa-quiz.natera.com";
     String  token ="YourTOKEN";
@@ -251,6 +250,7 @@ public class MainTest {
                         .extract()
                         .response();
     }
+    
     @Test
     public void TestEmptyBody(){
         Map<String,String> body = new HashMap<String, String>();
@@ -523,9 +523,9 @@ public class MainTest {
                         .extract()
                         .response();
         float resArea = response.getBody().jsonPath().getFloat("result");
-        Assert.assertEquals(resArea,area, "Should be the same");
-        
+        Assert.assertEquals(resArea,area, "Should be the same");   
     }
+    
     @Test
     public void TestDeletionOfTriangle(){
         Response responseGetBeforeDel =
@@ -568,7 +568,6 @@ public class MainTest {
                         .response();
         List<String> listAfterDel = responseGetAfterDel.getBody().jsonPath().getList("id");
         Assert.assertTrue(!listAfterDel.contains(trId));
-        
     }
     
     @DataProvider(name = "PositiveValTriangles")
